@@ -66,4 +66,23 @@ export interface MovieDetail extends Movie {
   spoken_languages: SpokenLanguage[];
   status: string;
   tagline: string;
+  movie_video?: string | null;
+}
+
+export interface MovieVideoResponse {
+  id: string;
+  results: MovieVideo[];
+}
+
+export interface MovieVideo {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
 }

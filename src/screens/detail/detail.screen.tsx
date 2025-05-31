@@ -11,7 +11,7 @@ import {
 import {useSelector} from 'react-redux';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {AppStackRouter, AppStackRoutes} from '../../routes';
-import {getMovieDetail} from '../../api/movies.api';
+import {getMovieDetail, getMovieVideos} from '../../api/movies.api';
 import {MovieDetail} from '../../api/movie.api.types';
 import {adaptMovieDetailResponse} from '../../api/adapters/movie.adapter';
 import {Header} from '../../components/ui/Header';
@@ -51,7 +51,13 @@ export const DetailScreen = () => {
   const handleGetMovieDetails = useCallback(async () => {
     try {
       const movieDetailResponse = await getMovieDetail(movieId);
-      setMovieDetails(adaptMovieDetailResponse(movieDetailResponse.data));
+      const videoResponse = await getMovieVideos(movieId);
+      setMovieDetails(
+        adaptMovieDetailResponse(
+          movieDetailResponse.data,
+          videoResponse.data.results,
+        ),
+      );
     } catch (error) {
       Alert.alert(APP_STRINGS.ERROR, APP_STRINGS.ERROR_GETTING_MOVIE_DETAILS);
     } finally {
@@ -74,6 +80,8 @@ export const DetailScreen = () => {
       handleGetMovieDetails();
     }
   }, [handleGetMovieDetails, isInWatchlist]);
+
+  console.log('movieDetails', movieDetails?.movie_video);
 
   return (
     <View style={styles.container}>
