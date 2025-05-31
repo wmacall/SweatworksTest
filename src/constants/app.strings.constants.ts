@@ -6,7 +6,7 @@ export const APP_STRINGS = {
   TOP_RATED: 'Top rated',
   HOME: 'Home',
   WATCH_LIST: 'Watch list',
-  WE_ARE_SORRY: 'we are sorry, we can\nnot find the movie :(',
+  WE_ARE_SORRY: 'We are sorry, we can\nnot find the movie :(',
   FIND_YOUR_MOVIE: 'Find your movie by Type title,\ncategories, years, etc',
   DETAIL: 'Detail',
   THERE_IS_NO_MOVIE_YET: 'There is no movie yet!',

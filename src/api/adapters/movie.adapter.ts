@@ -6,7 +6,7 @@ export const adaptMovieResponse = (movies: Movie[]): Movie[] =>
     adult: movie.adult ?? false,
     backdrop_path: movie.backdrop_path
       ? `${IMAGE_BASE_URL}${movie.backdrop_path}`
-      : '',
+      : 'https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png',
     genre_ids: movie.genre_ids ?? [],
     id: movie.id ?? 0,
     original_language: movie.original_language ?? 'unknown',
@@ -15,7 +15,7 @@ export const adaptMovieResponse = (movies: Movie[]): Movie[] =>
     popularity: movie.popularity ?? 0,
     poster_path: movie.poster_path
       ? `${IMAGE_BASE_URL}${movie.poster_path}`
-      : '',
+      : 'https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png',
     release_date: movie.release_date ?? 'Unknown',
     title: movie.title ?? 'Untitled',
     video: movie.video ?? false,
@@ -34,10 +34,10 @@ export const adaptMovieDetailResponse = (movie: MovieDetail): MovieDetail => ({
         name: movie.belongs_to_collection.name,
         poster_path: movie.belongs_to_collection.poster_path
           ? `${IMAGE_BASE_URL}${movie.belongs_to_collection.poster_path}`
-          : '',
+          : 'https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png',
         backdrop_path: movie.belongs_to_collection.backdrop_path
           ? `${IMAGE_BASE_URL}${movie.belongs_to_collection.backdrop_path}`
-          : '',
+          : 'https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png',
       }
     : null,
   budget: movie.budget ?? 0,

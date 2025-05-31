@@ -8,6 +8,7 @@ import {useAppDispatch} from '../../hooks';
 import {selectMoviesList} from '../../store/movies/movies.selector';
 import {APP_STRINGS} from '../../constants';
 import {MovieCard} from '../../components/MovieCard/MovieCard';
+import {Input} from '../../components/ui/Input';
 
 export const HomeScreen = () => {
   const dispatch = useAppDispatch();
@@ -23,9 +24,12 @@ export const HomeScreen = () => {
     <View style={styles.container}>
       <SafeAreaView />
       <ScrollView>
-        <Text style={styles.title}>
-          {APP_STRINGS.WHAT_DO_YOU_WANT_TO_WATCH}
-        </Text>
+        <View style={styles.headerContainer}>
+          <Text style={styles.title}>
+            {APP_STRINGS.WHAT_DO_YOU_WANT_TO_WATCH}
+          </Text>
+          <Input />
+        </View>
         <View>
           <FlatList
             data={movies}

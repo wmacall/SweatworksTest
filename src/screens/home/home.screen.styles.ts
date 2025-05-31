@@ -11,7 +11,6 @@ export default StyleSheet.create({
     fontSize: resize.scaleFont(18),
     fontWeight: '600',
     color: COLORS.WHITE,
-    paddingHorizontal: resize.scaleWidth(24),
   },
   contentContainerStyle: {
     gap: resize.scaleHeight(30),
@@ -26,5 +25,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'pink',
+  },
+  headerContainer: {
+    paddingHorizontal: resize.scaleWidth(24),
+    gap: resize.scaleHeight(24),
   },
 });

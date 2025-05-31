@@ -1,5 +1,5 @@
 import {FlatList, Image, Text, View} from 'react-native';
-import {Header} from '../../components/ui/Header/Header';
+import {Header} from '../../components/ui/Header';
 import {APP_STRINGS} from '../../constants';
 import styles from './watchlist.screen.styles';
 import {useSelector} from 'react-redux';
