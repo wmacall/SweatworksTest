@@ -48,4 +48,22 @@ export default StyleSheet.create({
   scrollView: {
     paddingBottom: resize.scaleHeight(24),
   },
+  tabContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: resize.scaleWidth(24),
+  },
+  tab: {
+    flex: 1,
+  },
+  tabActive: {
+    backgroundColor: COLORS.BLUE,
+  },
+  tabInactive: {
+    backgroundColor: 'pink',
+  },
+  tabText: {
+    fontSize: resize.scaleFont(14),
+    fontWeight: '500',
+    color: COLORS.WHITE,
+  },
 });
