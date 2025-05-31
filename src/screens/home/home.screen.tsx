@@ -21,6 +21,12 @@ import {selectMoviesList} from '../../store/movies/movies.selector';
 import {APP_STRINGS} from '../../constants';
 import {MovieCard} from '../../components/MovieCard/MovieCard';
 import {Input} from '../../components/ui/Input';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+import {resize} from '../../utils';
 
 const tabs = [
   APP_STRINGS.NOW_PLAYING,
@@ -34,14 +40,22 @@ export const HomeScreen = () => {
     useSelector(selectMoviesList);
   const [activeTab, setActiveTab] = useState(0);
 
+  const tabIndicatorPosition = useSharedValue(0);
+
   useEffect(() => {
-    if (!movies.length) {
-      dispatch(fetchPopularMovies());
-      dispatch(fetchNowPlayingMovies());
-      dispatch(fetchUpcomingMovies());
-      dispatch(fetchTopRatedMovies());
-    }
-  }, [dispatch, movies]);
+    dispatch(fetchPopularMovies());
+    dispatch(fetchNowPlayingMovies());
+    dispatch(fetchUpcomingMovies());
+    dispatch(fetchTopRatedMovies());
+  }, [dispatch]);
+
+  useEffect(() => {
+    tabIndicatorPosition.value = withTiming(activeTab * resize.scaleWidth(119));
+  }, [activeTab, tabIndicatorPosition]);
+
+  const tabIndicatorStyle = useAnimatedStyle(() => ({
+    transform: [{translateX: tabIndicatorPosition.value}],
+  }));
 
   const moviesByTab: Record<string, Movie[]> = {
     0: nowPlayingMovies,
@@ -72,13 +86,11 @@ export const HomeScreen = () => {
           />
         </View>
         <View style={styles.tabContainer}>
+          <Animated.View style={[styles.tabIndicator, tabIndicatorStyle]} />
           {tabs.map((tab, index) => (
             <Pressable
               key={index}
-              style={[
-                styles.tab,
-                activeTab === index ? styles.tabActive : styles.tabInactive,
-              ]}
+              style={styles.tab}
               onPress={() => setActiveTab(index)}>
               <Text style={styles.tabText}>{tab}</Text>
             </Pressable>

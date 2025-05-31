@@ -24,7 +24,6 @@ export default StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'pink',
   },
   headerContainer: {
     paddingHorizontal: resize.scaleWidth(24),
@@ -40,6 +39,7 @@ export default StyleSheet.create({
     gap: resize.scaleWidth(13),
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: resize.scaleHeight(20),
   },
   cardSection: {
     height: resize.scaleHeight(145),
@@ -50,20 +50,26 @@ export default StyleSheet.create({
   },
   tabContainer: {
     flexDirection: 'row',
-    paddingHorizontal: resize.scaleWidth(24),
+    marginHorizontal: resize.scaleWidth(24),
+    position: 'relative',
+    gap: resize.scaleHeight(28),
   },
   tab: {
     flex: 1,
-  },
-  tabActive: {
-    backgroundColor: COLORS.BLUE,
-  },
-  tabInactive: {
-    backgroundColor: 'pink',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   tabText: {
     fontSize: resize.scaleFont(14),
     fontWeight: '500',
     color: COLORS.WHITE,
+    marginBottom: resize.scaleHeight(10),
+  },
+  tabIndicator: {
+    position: 'absolute',
+    height: 4,
+    width: resize.scaleWidth(90),
+    backgroundColor: COLORS.GREY,
+    bottom: 0,
   },
 });
