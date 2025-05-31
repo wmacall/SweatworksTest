@@ -2,8 +2,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 export enum TabsNavigatorRoutes {
   HOME_SCREEN = 'HomeScreen',
-  SEARCH_SCREEN = 'BibleScreen',
-  WATCH_LIST_SCREEN = 'CoursesScreen',
+  SEARCH_SCREEN = 'SearchScreen',
+  WATCH_LIST_SCREEN = 'WatchListScreen',
 }
 
 export enum AppStackRoutes {

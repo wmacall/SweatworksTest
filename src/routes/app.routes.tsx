@@ -5,20 +5,27 @@ import {
   TabsNavigatorRouter,
   TabsNavigatorRoutes,
 } from './app.routes.types';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  BottomTabBarProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import {
   DetailScreen,
   HomeScreen,
   SearchScreen,
   WatchlistScreen,
 } from '../screens';
+import {TabBar} from '../components/ui/TabBar';
 
 const AppNavigator = createNativeStackNavigator<AppStackRouter>();
 const TabsNavigator = createBottomTabNavigator<TabsNavigatorRouter>();
 
+const renderTabBar = (props: BottomTabBarProps) => <TabBar {...props} />;
+
 const TabsRoutes = () => (
   <TabsNavigator.Navigator
     initialRouteName={TabsNavigatorRoutes.HOME_SCREEN}
+    tabBar={renderTabBar}
     screenOptions={{
       headerShown: false,
     }}>
