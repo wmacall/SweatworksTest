@@ -1,9 +1,3 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
-
-# Getting Started
-
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
-
 ## Step 1: Start Metro
 
 First, you will need to run **Metro**, the JavaScript build tool for React Native.
@@ -36,19 +30,15 @@ yarn android
 
 For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+Then, and every time you update your native dependencies, install the pods by running one of the following commands:
 
 ```sh
-bundle install
+# Using npx
+npx pod-install
+
+# OR manually
+cd ios && pod install
 ```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
 
 ```sh
 # Using npm
@@ -62,36 +52,26 @@ If everything is set up correctly, you should see your new app running in the An
 
 This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
-## Step 3: Modify your app
+## Libraries Used
 
-Now that you have successfully run the app, let's make changes!
+Below is a list of libraries used in this project along with their purpose:
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+1. **[@react-native-async-storage/async-storage](https://www.npmjs.com/package/@react-native-async-storage/async-storage)**: Used for persisting data locally on the device.
+2. **[axios](https://www.npmjs.com/package/axios)**: Used for all the api calls
+3. **[react-native-reanimated](https://www.npmjs.com/package/react-native-reanimated)**: For the animation of the tab and the list inside of it
+4. **[react-native-svg](https://www.npmjs.com/package/react-native-svg)**: Used for icons (I choose this option instead of using a icon library like phospor)
+5. **[react-native-webview](https://www.npmjs.com/package/react-native-webview)**: Used to see the movie trailer
+6. **[redux-persist](https://www.npmjs.com/package/redux-persist)**: Used to create all the config for persisting the data
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## Questions
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+- **What does the single responsibility principle consist of? What's its purpose?**
+  The single responsibility principle states that each module or class should have only one reason to change, meaning it should be responsible for a single task or responsibility. Its purpose is to avoid mixing multiple functionalities in one place, making the code easier to maintain, understand, and scale.
 
-## Congratulations! :tada:
+- **What characteristics, in your opinion, does “good” code or clean code have?**
+  For me, clean code should be self-explanatory; it shouldn't be necessary to write comments everywhere, only where it's really needed. Variable names should be descriptive, and reusable components should be simple to understand and avoid duplication. Everything should be kept separated so that it's easier to test and understand the code logic.
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- **Detail how you would do everything that you have not completed.**
+  For testing, I would use React Native Testing Library together with Jest. I would probably add a wrapper in the utils to handle everything related to navigation, the Redux store, and any other necessary wrappers to avoid duplicating code.
+  For the splash screen, I would use React Native Bootsplash.
+  For environment management, I would use either dotenv or React Native Config, whichever is preferred.
