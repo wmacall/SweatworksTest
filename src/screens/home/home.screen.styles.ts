@@ -30,4 +30,22 @@ export default StyleSheet.create({
     paddingHorizontal: resize.scaleWidth(24),
     gap: resize.scaleHeight(24),
   },
+  card: {
+    height: resize.scaleHeight(210),
+    width: resize.scaleWidth(145),
+  },
+  containerSection: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: resize.scaleWidth(13),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cardSection: {
+    height: resize.scaleHeight(145),
+    width: resize.scaleWidth(100),
+  },
+  scrollView: {
+    paddingBottom: resize.scaleHeight(24),
+  },
 });

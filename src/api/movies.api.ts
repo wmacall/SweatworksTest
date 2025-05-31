@@ -38,3 +38,21 @@ export const searchMovies = (
       query,
     },
   });
+
+export const getNowPlayingMovies = (): Promise<AxiosResponse<MovieResponse>> =>
+  dispatchRequest({
+    url: 'movie/now_playing',
+    method: 'GET',
+  });
+
+export const getUpcomingMovies = (): Promise<AxiosResponse<MovieResponse>> =>
+  dispatchRequest({
+    url: 'movie/upcoming',
+    method: 'GET',
+  });
+
+export const getTopRatedMovies = (): Promise<AxiosResponse<MovieResponse>> =>
+  dispatchRequest({
+    url: 'movie/top_rated',
+    method: 'GET',
+  });
