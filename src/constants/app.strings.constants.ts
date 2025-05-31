@@ -10,5 +10,4 @@ export const APP_STRINGS = {
   FIND_YOUR_MOVIE: 'Find your movie by Type title,\ncategories, years, etc',
   DETAIL: 'Detail',
   THERE_IS_NO_MOVIE_YET: 'There is no movie yet!',
-  FIND_YOUR_MOVIE_ALT: 'Find your movie by Type title, \nategories, years, etc',
 };

@@ -1,0 +1,9 @@
+export const COLORS = {
+  PRIMARY: '#242A32',
+  BLUE: '#0296E5',
+  GREY: '#3A3F47',
+  WHITE: '#FFFFFF',
+  BLACK: '#000000',
+  LIGHT_GREY: '#67686D',
+  ORANGE: '#FF8700',
+};
