@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../assets';
-import {resize} from '../../utils';
+import {BASE_WIDTH, resize} from '../../utils';
 
 export default StyleSheet.create({
   container: {
@@ -25,6 +25,7 @@ export default StyleSheet.create({
     marginBottom: resize.scaleHeight(8),
     backgroundColor: COLORS.PRIMARY,
     borderRadius: resize.scaleWidth(8),
+    position: 'absolute',
   },
   ratingText: {
     color: COLORS.ORANGE,
@@ -43,6 +44,7 @@ export default StyleSheet.create({
     height: resize.scaleHeight(120),
     width: resize.scaleWidth(95),
     borderRadius: resize.scaleWidth(16),
+    backgroundColor: COLORS.LIGHT_GREY,
   },
   movieTitle: {
     color: COLORS.WHITE,
@@ -72,5 +74,10 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  webView: {
+    height: resize.scaleHeight(210),
+    width: BASE_WIDTH,
+    backgroundColor: COLORS.LIGHT_GREY,
   },
 });

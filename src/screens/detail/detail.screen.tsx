@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {useSelector} from 'react-redux';
 import {RouteProp, useRoute} from '@react-navigation/native';
+import WebView from 'react-native-webview';
 import {AppStackRouter, AppStackRoutes} from '../../routes';
 import {getMovieDetail, getMovieVideos} from '../../api/movies.api';
 import {MovieDetail} from '../../api/movie.api.types';
@@ -102,6 +103,14 @@ export const DetailScreen = () => {
       ) : (
         <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
           <View style={styles.previewContainer}>
+            {movieDetails?.movie_video ? (
+              <WebView
+                startInLoadingState
+                source={{uri: movieDetails?.movie_video || ''}}
+                allowsFullscreenVideo
+                style={styles.webView}
+              />
+            ) : null}
             <View style={styles.ratingContainer}>
               <StarIcon />
               <Text style={styles.ratingText}>
@@ -111,7 +120,7 @@ export const DetailScreen = () => {
           </View>
           <View style={styles.headerContainer}>
             <Image
-              resizeMode="contain"
+              resizeMode="cover"
               source={{uri: movieDetails?.poster_path}}
               style={styles.posterImage}
             />

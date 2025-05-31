@@ -61,12 +61,12 @@ export const adaptMovieDetailResponse = (
     popularity: movie.popularity ?? 0,
     poster_path: movie.poster_path
       ? `${IMAGE_BASE_URL}${movie.poster_path}`
-      : '',
+      : 'https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png',
     production_companies: movie.production_companies.map(company => ({
       id: company.id,
       logo_path: company.logo_path
         ? `${IMAGE_BASE_URL}${company.logo_path}`
-        : '',
+        : 'https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png',
       name: company.name,
       origin_country: company.origin_country,
     })),
@@ -85,7 +85,9 @@ export const adaptMovieDetailResponse = (
     status: movie.status ?? 'Unknown',
     tagline: movie.tagline ?? '',
     title: movie.title ?? 'Untitled',
-    movie_video: `https://www.youtube.com/watch?v=${youtubeVideo?.key ?? ''}`,
+    movie_video: youtubeVideo
+      ? `https://www.youtube.com/watch?v=${youtubeVideo?.key}`
+      : null,
     vote_average: movie.vote_average ?? 0,
     vote_count: movie.vote_count ?? 0,
     genre_ids: movie.genre_ids ?? [],
