@@ -5,19 +5,25 @@ import {COLORS} from '../../../assets';
 import {APP_STRINGS} from '../../../constants';
 import {TabsNavigatorRoutes} from '../../../routes';
 import {resize} from '../../../utils';
+import {HomeIcon} from '../../../assets/icons/home.icon';
+import {SearchIcon} from '../../../assets/icons/search.icon';
+import {SaveIcon} from '../../../assets/icons/save.icon';
 
 const tabs = [
   {
     name: APP_STRINGS.HOME,
     route: TabsNavigatorRoutes.HOME_SCREEN,
+    Icon: HomeIcon,
   },
   {
     name: APP_STRINGS.SEARCH,
     route: TabsNavigatorRoutes.SEARCH_SCREEN,
+    Icon: SearchIcon,
   },
   {
     name: APP_STRINGS.WATCH_LIST,
     route: TabsNavigatorRoutes.WATCH_LIST_SCREEN,
+    Icon: SaveIcon,
   },
 ];
 
@@ -30,12 +36,15 @@ export const TabBar: FC<TabBarProps> = ({state, navigation}) => {
     <View style={styles.container}>
       {tabs.map((tab, index) => {
         const isActive = index === state.index;
+        const Icon = tab.Icon;
         return (
           <Pressable
             key={tab.route}
             style={styles.tab}
             onPress={() => handleNavigate(tab.route)}>
-            <View style={styles.icon} />
+            <View style={styles.icon}>
+              <Icon fill={isActive ? COLORS.BLUE : COLORS.LIGHT_GREY} />
+            </View>
             <Text
               style={[
                 styles.text,
