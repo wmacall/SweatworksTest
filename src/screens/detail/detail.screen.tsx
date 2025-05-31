@@ -1,4 +1,5 @@
-import {RouteProp, useRoute} from '@react-navigation/native';
+import {useEffect, useCallback, useState} from 'react';
+
 import {
   ActivityIndicator,
   Alert,
@@ -7,29 +8,45 @@ import {
   Text,
   View,
 } from 'react-native';
+import {useSelector} from 'react-redux';
+import {RouteProp, useRoute} from '@react-navigation/native';
 import {AppStackRouter, AppStackRoutes} from '../../routes';
-import {useEffect, useCallback, useState} from 'react';
 import {getMovieDetail} from '../../api/movies.api';
 import {MovieDetail} from '../../api/movie.api.types';
 import {adaptMovieDetailResponse} from '../../api/adapters/movie.adapter';
-import styles from './detail.screen.styles';
 import {Header} from '../../components/ui/Header/Header';
+import {InfoRow} from '../../components/ui/InfoRow/InfoRow';
 import {APP_STRINGS} from '../../constants';
-import {SaveIcon} from '../../assets/icons/save.icon';
 import {COLORS} from '../../assets';
 import {extractYearFromDate} from '../../utils';
-import {InfoRow} from '../../components/ui/InfoRow/InfoRow';
+import {SaveIcon} from '../../assets/icons/save.icon';
 import {ClockIcon} from '../../assets/icons/clock.icon';
 import {TicketIcon} from '../../assets/icons/ticket.icon';
 import {CalendarIcon} from '../../assets/icons/calendar.icon';
 import {StarIcon} from '../../assets/icons/star.icon';
+import {useAppDispatch} from '../../hooks';
+import {
+  addToWatchlist,
+  removeFromWatchlist,
+} from '../../store/watchlist/watchlist.slice';
+import {
+  selectIsInWatchlist,
+  selectMovieInWatchlist,
+} from '../../store/watchlist/watchlist.selector';
+import styles from './detail.screen.styles';
 
 export const DetailScreen = () => {
-  const [movieDetails, setMovieDetails] = useState<MovieDetail | null>(null);
   const {params} =
     useRoute<RouteProp<AppStackRouter, AppStackRoutes.DETAIL_SCREEN>>();
   const {movieId} = params;
-  const [isLoading, setIsLoading] = useState(true);
+
+  const dispatch = useAppDispatch();
+  const isInWatchlist = useSelector(selectIsInWatchlist(movieId));
+  const movieInWatchlist = useSelector(selectMovieInWatchlist(movieId));
+  const [movieDetails, setMovieDetails] = useState<MovieDetail | null>(
+    movieInWatchlist,
+  );
+  const [isLoading, setIsLoading] = useState(isInWatchlist ? false : true);
 
   const handleGetMovieDetails = useCallback(async () => {
     try {
@@ -45,15 +62,33 @@ export const DetailScreen = () => {
     }
   }, [movieId]);
 
+  const onToggleWatchList = () => {
+    if (movieDetails) {
+      if (isInWatchlist) {
+        dispatch(removeFromWatchlist(movieId));
+      } else {
+        dispatch(addToWatchlist(movieDetails));
+      }
+    }
+  };
+
   useEffect(() => {
-    handleGetMovieDetails();
-  }, [handleGetMovieDetails]);
+    if (!isInWatchlist) {
+      handleGetMovieDetails();
+    }
+  }, [handleGetMovieDetails, isInWatchlist]);
 
   return (
     <View style={styles.container}>
       <Header
         title={APP_STRINGS.DETAIL}
-        rightIcon={<SaveIcon fill={COLORS.WHITE} />}
+        onRightIconPress={onToggleWatchList}
+        rightIcon={
+          <SaveIcon
+            fill={COLORS.WHITE}
+            stroke={isInWatchlist ? COLORS.WHITE : 'none'}
+          />
+        }
       />
       {isLoading ? (
         <View style={styles.containerLoader}>

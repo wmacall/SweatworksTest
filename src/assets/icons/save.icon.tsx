@@ -11,6 +11,7 @@ export const SaveIcon = (props: SvgProps) => {
         strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
+        fill={props.stroke || 'none'}
       />
     </Svg>
   );

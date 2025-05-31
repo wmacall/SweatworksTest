@@ -12,9 +12,11 @@ import {
 } from 'redux-persist';
 
 import moviesSlice from './movies/movies.slice';
+import watchlistReducer from './watchlist/watchlist.slice';
 
 const rootReducer = combineReducers({
   movies: moviesSlice,
+  watchlist: watchlistReducer,
 });
 
 const persistConfig = {
