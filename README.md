@@ -75,3 +75,10 @@ Below is a list of libraries used in this project along with their purpose:
   For testing, I would use React Native Testing Library together with Jest. I would probably add a wrapper in the utils to handle everything related to navigation, the Redux store, and any other necessary wrappers to avoid duplicating code.
   For the splash screen, I would use React Native Bootsplash.
   For environment management, I would use either dotenv or React Native Config, whichever is preferred.
+
+## DEMO
+
+
+
+https://github.com/user-attachments/assets/d4ca05be-a0da-4f8e-af3f-4af7bf87a26b
+
