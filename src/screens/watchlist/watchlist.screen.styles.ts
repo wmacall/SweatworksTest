@@ -29,4 +29,9 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginTop: resize.scaleHeight(8),
   },
+  containerList: {
+    paddingHorizontal: resize.scaleWidth(32),
+    paddingVertical: resize.scaleHeight(24),
+    gap: resize.scaleHeight(16),
+  },
 });

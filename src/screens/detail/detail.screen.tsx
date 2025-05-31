@@ -53,10 +53,7 @@ export const DetailScreen = () => {
       const movieDetailResponse = await getMovieDetail(movieId);
       setMovieDetails(adaptMovieDetailResponse(movieDetailResponse.data));
     } catch (error) {
-      Alert.alert(
-        'Error',
-        'Failed to fetch movie details. Please try again later.',
-      );
+      Alert.alert(APP_STRINGS.ERROR, APP_STRINGS.ERROR_GETTING_MOVIE_DETAILS);
     } finally {
       setIsLoading(false);
     }
@@ -106,6 +103,7 @@ export const DetailScreen = () => {
           </View>
           <View style={styles.headerContainer}>
             <Image
+              resizeMode="contain"
               source={{uri: movieDetails?.poster_path}}
               style={styles.posterImage}
             />

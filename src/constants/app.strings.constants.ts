@@ -10,4 +10,7 @@ export const APP_STRINGS = {
   FIND_YOUR_MOVIE: 'Find your movie by Type title,\ncategories, years, etc',
   DETAIL: 'Detail',
   THERE_IS_NO_MOVIE_YET: 'There is no movie yet!',
+  ERROR: 'Error',
+  ERROR_GETTING_MOVIE_DETAILS:
+    'Failed to get movie details. Please try again later.',
 };
