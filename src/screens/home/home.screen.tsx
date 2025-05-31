@@ -22,6 +22,8 @@ import {APP_STRINGS} from '../../constants';
 import {MovieCard} from '../../components/MovieCard/MovieCard';
 import {Input} from '../../components/ui/Input';
 import Animated, {
+  FadeIn,
+  FadeOut,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
@@ -98,7 +100,12 @@ export const HomeScreen = () => {
         </View>
         <View style={styles.containerSection}>
           {moviesByTab[activeTab].map((movie: Movie) => (
-            <MovieCard key={movie.id} {...movie} style={styles.cardSection} />
+            <Animated.View
+              key={movie.id}
+              entering={FadeIn}
+              exiting={FadeOut}>
+              <MovieCard {...movie} style={styles.cardSection} />
+            </Animated.View>
           ))}
         </View>
       </ScrollView>
